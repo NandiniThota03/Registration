@@ -11,7 +11,7 @@ function Login() {
     const [isSubmitting, setIsSubmitting] = useState(false);
  
     useEffect(()=>{
-        if(localStorage.getItem('token') != "" && localStorage.getItem('token') != null){
+        if(localStorage.getItem('token') !== "" && localStorage.getItem('token') !== null){
             navigate("/dashboard");
         }
         console.log(localStorage.getItem('token'))
@@ -33,10 +33,10 @@ function Login() {
         })
         .catch((e) => {
             setIsSubmitting(false)
-            if (e.response.data.errors != undefined) {
+            if (e.response.data.errors !== undefined) {
                 setValidationErrors(e.response.data.errors);
             }
-            if (e.response.data.error != undefined) {
+            if (e.response.data.error !== undefined) {
                 setValidationErrors(e.response.data.error);
             }
         });
@@ -51,7 +51,7 @@ function Login() {
                         <div className="card-body">
                             <h5 className="card-title mb-4">Sign In</h5>
                             <form onSubmit={(e)=>{loginAction(e)}}>
-                                {Object.keys(validationErrors).length != 0 &&
+                                {Object.keys(validationErrors).length !== 0 &&
                                      <p className='text-center '><small className='text-danger'>Incorrect Email or Password</small></p>
                                 }
                                 
